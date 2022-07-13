@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from "./pages/login/Login.vue";
 import Home from "./pages/home/Home.vue";
+import { appMainStore } from "./store";
 
 export const routesConfig = createRouter({
     history: createWebHistory(),
@@ -24,11 +25,10 @@ export const routesConfig = createRouter({
 });
 
 routesConfig.beforeEach((to, from) => {
-    let authCookie = true;
-    //let authCookie = document.cookie.auth;
+    let hasUser = appMainStore().user;
 
-    if(authCookie && to.name !== from.name) {
-        return true;
-    }
+    if( from.fullPath === "/" ) return true;
+    if( hasUser && to.name !== from.name ) return true
+
     return false;
 });
