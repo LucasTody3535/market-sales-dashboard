@@ -1,11 +1,24 @@
-<script setup>
-import { useRouter } from "vue-router";
-
-let ROUTER = useRouter();
-</script>
+<script setup></script>
 
 <template>
   <router-view></router-view>
 </template>
 
-<style></style>
+<style>
+body {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+}
+</style>
