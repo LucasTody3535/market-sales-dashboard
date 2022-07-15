@@ -28,7 +28,8 @@ routesConfig.beforeEach((to, from) => {
     let hasUser = appMainStore().user;
 
     if( from.fullPath === "/" ) return true;
-    if( hasUser && to.name !== from.name ) return true
+    if( hasUser && to.name !== from.name ) return true;
+    if( from.fullPath === "/home" && !hasUser ) return true;
 
     return false;
 });

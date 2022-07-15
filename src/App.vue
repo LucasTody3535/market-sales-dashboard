@@ -21,4 +21,8 @@ body * {
   height: 100%;
   width: 100%;
 }
+
+:root {
+  font-size: 10px;
+}
 </style>

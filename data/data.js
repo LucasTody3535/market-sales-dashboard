@@ -2,7 +2,8 @@ const USERS = Object.freeze([
     {
        id: 1,
        access_id: "20FGtr24",
-       password: "12345"
+       password: "12345",
+       startYear: 2015
     }
 ]);
 
