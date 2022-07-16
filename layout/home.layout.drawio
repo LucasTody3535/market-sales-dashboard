@@ -1,0 +1,114 @@
+<mxfile host="65bd71144e">
+    <diagram id="4J9q9JsIow64MUyTXdXt" name="Page-1">
+        <mxGraphModel dx="1513" dy="1650" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="#4D4D4D" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="359" y="229" width="1280" height="857" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=40;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="373" y="251" width="1246" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" style="edgeStyle=entityRelationEdgeStyle;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontSize=30;" edge="1" parent="1" source="51" target="53">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1355" y="72.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="53" value="Line Chart" style="rounded=0;whiteSpace=wrap;html=1;fontSize=30;fillColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1303" y="-172" width="370" height="193" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="" style="edgeStyle=entityRelationEdgeStyle;html=1;fontSize=30;" edge="1" parent="1" source="55" target="57">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="Bar Chart" style="whiteSpace=wrap;html=1;fontSize=30;fillColor=#000000;strokeColor=none;fontColor=#ffffff;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1719" y="561.5" width="440" height="185" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="" style="edgeStyle=entityRelationEdgeStyle;html=1;fontSize=30;" edge="1" parent="1" source="60" target="62">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="Line Chart" style="rounded=0;whiteSpace=wrap;html=1;fontSize=30;fillColor=#000000;fontColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="1699" y="766" width="445" height="178" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="349" y="420" width="1269" height="582" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="KPIs" style="rounded=0;whiteSpace=wrap;html=1;fontSize=40;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="64">
+                    <mxGeometry x="19" width="278" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="group" vertex="1" connectable="0" parent="64">
+                    <mxGeometry x="2" y="60" width="295" height="182" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=40;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="21">
+                    <mxGeometry x="17" y="19" width="278" height="155" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="&lt;font style=&quot;font-size: 30px&quot;&gt;Target Sales&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40;" vertex="1" parent="21">
+                    <mxGeometry x="41" y="112" width="230" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Value" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40;" vertex="1" parent="21">
+                    <mxGeometry x="58.5" y="64" width="195" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="&lt;font style=&quot;font-size: 20px&quot;&gt;Per Quarter&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40;" vertex="1" parent="21">
+                    <mxGeometry width="148" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="group" vertex="1" connectable="0" parent="64">
+                    <mxGeometry y="230" width="295" height="182" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=40;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="22">
+                    <mxGeometry x="17" y="19" width="278" height="155" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="&lt;font style=&quot;font-size: 30px&quot;&gt;Target Expenses&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40;" vertex="1" parent="22">
+                    <mxGeometry x="41" y="112" width="230" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Value" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40;" vertex="1" parent="22">
+                    <mxGeometry x="58.5" y="64" width="195" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="&lt;font style=&quot;font-size: 20px&quot;&gt;Per Quarter&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40;" vertex="1" parent="22">
+                    <mxGeometry width="148" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="group" vertex="1" connectable="0" parent="64">
+                    <mxGeometry x="3" y="400" width="295" height="182" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=40;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="30">
+                    <mxGeometry x="17" y="19" width="278" height="155" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="&lt;font style=&quot;font-size: 30px&quot;&gt;Incomes&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40;" vertex="1" parent="30">
+                    <mxGeometry x="41" y="112" width="230" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="Value" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40;" vertex="1" parent="30">
+                    <mxGeometry x="58.5" y="64" width="195" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="&lt;font style=&quot;font-size: 20px&quot;&gt;Per Quarter&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40;" vertex="1" parent="30">
+                    <mxGeometry width="148" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="Sales this quarter&lt;br&gt;comparing against past Sales" style="rounded=0;whiteSpace=wrap;html=1;fontSize=30;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="64">
+                    <mxGeometry x="351" width="445" height="178" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="Revenue This Quarter" style="rounded=0;whiteSpace=wrap;html=1;fontSize=30;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="64">
+                    <mxGeometry x="824" width="445" height="178" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=30;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="64">
+                    <mxGeometry x="351" y="201" width="918" height="178" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="Sales Growth per Year" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;" vertex="1" parent="64">
+                    <mxGeometry x="598.5" y="212" width="365" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="This Quarter Medium Ticket" style="rounded=0;whiteSpace=wrap;html=1;fontSize=30;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="64">
+                    <mxGeometry x="351" y="404" width="445" height="178" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=30;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="64">
+                    <mxGeometry x="820" y="402" width="445" height="178" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="Anual Growth" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;" vertex="1" parent="64">
+                    <mxGeometry x="824" y="412" width="191" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="&lt;font color=&quot;#000000&quot;&gt;Quarter&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=30;fillColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="1423" y="281" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="&lt;font color=&quot;#000000&quot;&gt;Year&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=30;fillColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="1236" y="281" width="170" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
