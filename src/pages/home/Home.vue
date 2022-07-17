@@ -1,9 +1,31 @@
 <script setup>
+import { onMounted, provide, reactive, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { queryKpiAndFormat } from '../../../data/data';
 import Data from '../../components/data/Data.vue';
 import Kpi from '../../components/kpi/Kpi.vue';
 import Menu from '../../components/menu/Menu.vue';
+import { appMainStore } from '../../store';
+
+const STORE = appMainStore();
+const ROUTER = useRouter();
+let KPI_DATA = reactive({
+    list: []
+});
+
+provide("kpiData", KPI_DATA);
 
 document.querySelector("#app").dataset.page = "home";
+
+onMounted(async () => {
+    if( STORE.user === null ) {
+        await ROUTER.replace("/login");
+        return;
+    }
+    
+    let usr = await queryKpiAndFormat(STORE.user.user.id);
+    KPI_DATA.list = usr.items;
+})
 </script>
 
 <template>

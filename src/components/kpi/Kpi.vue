@@ -1,13 +1,14 @@
 <script setup>
+import { inject } from 'vue';
 import KpiItem from '../kpi-item/KpiItem.vue';
+
+const kpi = inject("kpiData");
 </script>
 
 <template>
     <h2>KPIs</h2>
     <div id="kpi-items">
-        <KpiItem legend="Target Sales" value="3.000un"></KpiItem>
-        <KpiItem legend="Target Expenses" value="$20.000"></KpiItem>
-        <KpiItem legend="Incomes" value="$3.000"></KpiItem>
+        <KpiItem v-for="(kpi, index) in kpi.list" :key="index" :legend="kpi.name" :value="kpi.value"></KpiItem>
     </div>
 </template>
 
