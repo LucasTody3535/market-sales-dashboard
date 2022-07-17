@@ -24,5 +24,7 @@ body * {
 
 :root {
   font-size: 10px;
+  --box-color: antiquewhite;
+  --font-color: #000;
 }
 </style>

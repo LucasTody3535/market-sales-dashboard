@@ -1,35 +1,63 @@
 <script setup>
+import Data from '../../components/data/Data.vue';
+import Kpi from '../../components/kpi/Kpi.vue';
+import Menu from '../../components/menu/Menu.vue';
+
 document.querySelector("#app").dataset.page = "home";
 </script>
 
 <template>
     <nav>
-        Menu
+        <Menu></Menu>
     </nav>
     <aside>
-        Kpi
+        <Kpi></Kpi>
     </aside>
     <main>
-        Charts
+        <Data></Data>
     </main>
 </template>
 
 <style>
 [data-page="home"] {
-    background-color: black;
+    background-color: white;
     display: grid;
     grid-template-areas:
     "menu menu menu";
     grid-template-rows: 10vh 90vh;
-    grid-template-columns: repeat(2, 50%);
-}
-
-[data-page="home"] * {
-    background-color: brown;
+    grid-template-columns: 15% 85%;
 }
 
 [data-page="home"] nav {
-    background-color: red;
     grid-area: menu;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--box-color);
+    border-bottom: 1px solid black;
+}
+
+[data-page="home"] aside {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+[data-page="home"] main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+    row-gap: 5px;
+    column-gap: 5px;
+    flex-wrap: wrap;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+[data-page="home"] main::-webkit-scrollbar {
+    display: none;
 }
 </style>
