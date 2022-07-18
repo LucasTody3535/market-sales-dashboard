@@ -35,8 +35,9 @@ export async function queryUserSalesData(user_id, year, quarter) {
         revenue: 0,
         ticket: 0,
         profitMargin: 0,
-        totalSales: 0
-    }
+        totalSales: 0,
+        items: null
+    };
 
     for( let sale of SALES_DATA ) {
         if( sale.user_id === user_id )  salesInfo = sale.items[year][quarter];
@@ -56,5 +57,6 @@ export async function queryUserSalesData(user_id, year, quarter) {
     salesFormattedInfo.totalSales = `${salesFormattedInfo.totalSales}${SYMBOLS.unity}`;
 
     console.log(salesFormattedInfo)
+    salesFormattedInfo.items = salesInfo.sales;
     return salesFormattedInfo;
 }
