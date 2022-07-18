@@ -1,12 +1,36 @@
-<script setup></script>
+<script setup>
+import { onMounted, ref } from 'vue';
+
+const emit = defineEmits(['optionsChanged']);
+let year = ref("year2015");
+let quarter = ref("firstQuarter");
+
+function whenOptionChanged() {
+    emit("optionsChanged", {
+        y: year,
+        q: quarter
+    });
+}
+
+onMounted(() => {
+    emit("optionsChanged", {
+        y: year,
+        q: quarter
+    });
+});
+
+</script>
 
 <template>
     <label for="year">Year:</label>
-    <select name="year" id="year">
-        <option value="2021">2021</option>
+    <select @change="whenOptionChanged" v-model="year" name="year" id="year">
+        <option value="year2015">2015</option>
+        <option value="year2016">2016</option>
+        <option value="year2017">2017</option>
+        <option value="year2018">2018</option>
     </select>
     <label for="year">Period:</label>
-    <select name="period" id="period">
+    <select @change="whenOptionChanged" v-model="quarter" name="period" id="period">
         <option value="firstQuarter">First Quarter</option>
         <option value="secondQuarter">Second Quarter</option>
         <option value="thirdQuarter">Third Quarter</option>

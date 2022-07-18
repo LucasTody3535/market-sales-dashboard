@@ -1,6 +1,22 @@
 <script setup>
+import { inject, ref, watch } from 'vue';
 import BarChart from '../charts/bar/BarChart.vue';
 import LineChart from '../charts/line/LineChart.vue';
+
+let salesData = inject("salesData");
+let selfData = ref({
+    ticketValue: 0,
+    profitValue: 0,
+    revenueValue: 0,
+    salesValue: 0
+});
+
+watch(salesData, () => {
+    selfData.value.ticketValue = salesData.value.ticket;
+    selfData.value.revenueValue = salesData.value.revenue;
+    selfData.value.profitValue = salesData.value.profitMargin;
+    selfData.value.salesValue = salesData.value.totalSales;
+})
 </script>
 
 <template>
@@ -8,25 +24,25 @@ import LineChart from '../charts/line/LineChart.vue';
         <h3>
             Medium Ticket
         </h3>
-        <p>$700,00</p>
+        <p>{{selfData.ticketValue}}</p>
     </div>
     <div>
         <h3>
             Revenue
         </h3>
-        <p>$50.000</p>
+        <p>{{selfData.revenueValue}}</p>
     </div>
     <div>
         <h3>
             Profit
         </h3>
-        <p>25%</p>
+        <p>{{selfData.profitValue}}</p>
     </div>
     <div>
         <h3>
             Total Sales
         </h3>
-        <p>50.000un</p>
+        <p>{{selfData.salesValue}}</p>
     </div>
     <div id="line-chart">
         <h3>

@@ -1,7 +1,7 @@
 <script setup>
-import { onMounted, provide, reactive, ref } from 'vue';
+import { onMounted, provide, reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import { queryKpiAndFormat } from '../../../data/data';
+import { queryKpiAndFormat, queryUserSalesData } from '../../../data/data';
 import Data from '../../components/data/Data.vue';
 import Kpi from '../../components/kpi/Kpi.vue';
 import Menu from '../../components/menu/Menu.vue';
@@ -12,8 +12,17 @@ const ROUTER = useRouter();
 let KPI_DATA = reactive({
     list: []
 });
+const SALES_DATA = reactive({
+    value: null
+});
+
+async function treatChangeOfOptions(data) {
+    if( STORE.user === null ) return;
+    SALES_DATA.value = await queryUserSalesData(STORE.user.user.id, data.y.value, data.q.value);
+}
 
 provide("kpiData", KPI_DATA);
+provide("salesData", SALES_DATA);
 
 document.querySelector("#app").dataset.page = "home";
 
@@ -30,7 +39,7 @@ onMounted(async () => {
 
 <template>
     <nav>
-        <Menu></Menu>
+        <Menu @optionsChanged="treatChangeOfOptions"></Menu>
     </nav>
     <aside>
         <Kpi></Kpi>
