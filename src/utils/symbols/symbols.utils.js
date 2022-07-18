@@ -1,4 +1,5 @@
 export const SYMBOLS = Object.freeze({
     money: "$",
-    unity: "un"
+    unity: "un",
+    percent: "%"
 });

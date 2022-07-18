@@ -1,37 +1,7 @@
 import { formatNumToReadableString } from "../src/utils/numbers/number.utils";
 import { SYMBOLS } from "../src/utils/symbols/symbols.utils";
-
-const USERS = Object.freeze([
-    {
-       id: 1,
-       access_id: "20FGtr24",
-       password: "12345",
-       startYear: 2015
-    }
-]);
-
-const KPIS = Object.freeze([
-    {
-        user_id: USERS[0].id,
-        items: [
-            {
-                name: "Target Sales",
-                value: 3000,
-                type: "unity"
-            },
-            {
-                name: "Target Expenses",
-                value: 20000,
-                type: "money"
-            },
-            {
-                name: "Target Incomes",
-                value: 3000,
-                type: "money"
-            }
-        ]
-    }
-]);
+import { SALES_DATA, KPIS, USERS } from "./db";
+import { calculateProfitMargin, calculateRevenue, calculateTicket, calculateTotalSales } from "./db.data.operations";
 
 export async function queryCanAccess(access_id, password) {
     for( let user of USERS ) {
@@ -57,4 +27,34 @@ export async function queryKpiAndFormat(user_id) {
     }
 
     return userKpis;
+}
+
+export async function queryUserSalesData(user_id, year, quarter) {
+    let salesInfo = null;
+    let salesFormattedInfo = {
+        revenue: 0,
+        ticket: 0,
+        profitMargin: 0,
+        totalSales: 0
+    }
+
+    for( let sale of SALES_DATA ) {
+        if( sale.user_id === user_id )  salesInfo = sale.items[year][quarter];
+    }
+
+    salesFormattedInfo.revenue = calculateRevenue(salesInfo.sales);
+    salesFormattedInfo.ticket = calculateTicket(salesFormattedInfo.revenue, salesInfo.clients);
+    salesFormattedInfo.profitMargin = calculateProfitMargin(salesInfo.profit, salesFormattedInfo.revenue);
+    salesFormattedInfo.totalSales = calculateTotalSales(salesInfo.sales);
+
+    salesFormattedInfo.revenue = formatNumToReadableString(salesFormattedInfo.revenue);
+    salesFormattedInfo.totalSales = formatNumToReadableString(salesFormattedInfo.totalSales);
+
+    salesFormattedInfo.profitMargin = `${salesFormattedInfo.profitMargin}${SYMBOLS.percent}`;
+    salesFormattedInfo.revenue = `${SYMBOLS.money}${salesFormattedInfo.revenue}`;
+    salesFormattedInfo.ticket = `${SYMBOLS.money}${salesFormattedInfo.ticket}`;
+    salesFormattedInfo.totalSales = `${salesFormattedInfo.totalSales}${SYMBOLS.unity}`;
+
+    console.log(salesFormattedInfo)
+    return salesFormattedInfo;
 }
