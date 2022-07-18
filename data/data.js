@@ -1,7 +1,7 @@
 import { formatNumToReadableString } from "../src/utils/numbers/number.utils";
 import { SYMBOLS } from "../src/utils/symbols/symbols.utils";
 import { SALES_DATA, KPIS, USERS } from "./db";
-import { calculateProfitMargin, calculateRevenue, calculateTicket, calculateTotalSales } from "./db.data.operations";
+import { calculateProfitMargin, calculateRevenue, calculateTicket, calculateTotalSales, formatSalesMetadata } from "./db.data.operations";
 
 export async function queryCanAccess(access_id, password) {
     for( let user of USERS ) {
@@ -56,7 +56,8 @@ export async function queryUserSalesData(user_id, year, quarter) {
     salesFormattedInfo.ticket = `${SYMBOLS.money}${salesFormattedInfo.ticket}`;
     salesFormattedInfo.totalSales = `${salesFormattedInfo.totalSales}${SYMBOLS.unity}`;
 
-    console.log(salesFormattedInfo)
     salesFormattedInfo.items = salesInfo.sales;
+    formatSalesMetadata(salesFormattedInfo.items);
+
     return salesFormattedInfo;
 }

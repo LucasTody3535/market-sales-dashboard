@@ -1,3 +1,5 @@
+import { formatNumToReadableString } from "../src/utils/numbers/number.utils";
+
 export function calculateRevenue(sales) {
     let revenue = 0;
 
@@ -26,4 +28,11 @@ export function calculateTicket(totalSales, totalClients) {
 export function calculateProfitMargin(profit, revenue) {
     let profitMargin = (profit / revenue) * 100;
     return Number(profitMargin.toFixed(2));
+}
+
+export function formatSalesMetadata(sales) {
+    for( let sale in sales ) {
+        sales[sale].revenue = `$${formatNumToReadableString(sales[sale].revenue)}`;
+        sales[sale].formattedQuantity = `${formatNumToReadableString(sales[sale].quantity)}un`;
+    }
 }

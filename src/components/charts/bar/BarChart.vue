@@ -1,7 +1,9 @@
 <script setup>
 import { BarController, BarElement, CategoryScale, Chart, Legend, LinearScale, PointElement, Tooltip } from "chart.js";
-import { onMounted, ref } from "vue";
+import { inject, onMounted, ref, watch } from "vue";
 import { COLORS, DEPARTMENTS } from "../../../consts/consts";
+
+let salesData = inject("salesData");
 
 Chart.register(
     BarController, BarElement,
@@ -11,13 +13,13 @@ Chart.register(
     Tooltip
 );
 
-const CHART_REF = ref(null);
+let CHART_REF = null;
+let ITEMS_PROFIT = {};
 
 onMounted(() => {
     let area = document.querySelector("#barChart");
-    console.log(area.id)
 
-    CHART_REF.value = new Chart(area, {
+    CHART_REF = new Chart(area, {
         type: "bar",
         data: {
             labels: DEPARTMENTS,
@@ -33,6 +35,21 @@ onMounted(() => {
             plugins: {
                 legend: {
                     display: false
+                },
+                tooltip: {
+                    usePointStyle: true,
+                    callbacks: {
+                        label: function(metadata) {
+                            let meta = null;
+
+                            if( metadata.label === "dairy products" ) meta = ITEMS_PROFIT["dairyProducts"];
+                            else meta =  ITEMS_PROFIT[metadata.label];
+
+                            if( meta === undefined ) return;
+
+                            return `Quantity: ${meta.formattedQuantity} - Revenue: ${meta.revenue}`;
+                        }
+                    }
                 }
             },
             scales: {
@@ -58,6 +75,18 @@ onMounted(() => {
 
 })
 
+watch(salesData, () => {
+    let dataList = [];
+    ITEMS_PROFIT = salesData.value.items;
+
+    for( let data in ITEMS_PROFIT ) {
+        dataList.push(ITEMS_PROFIT[data].quantity);
+    }
+
+    CHART_REF.data.datasets[0].n = 12;
+    CHART_REF.data.datasets[0].data = dataList
+    CHART_REF.update();
+})
 </script>
 
 <template>
