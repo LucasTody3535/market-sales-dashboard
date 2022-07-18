@@ -47,7 +47,7 @@ onMounted(() => {
 
                             if( meta === undefined ) return;
 
-                            return `Quantity: ${meta.formattedQuantity} - Revenue: ${meta.revenue}`;
+                            return `Quantity: ${meta.formattedQuantity} - Revenue: ${meta.formattedRevenue}`;
                         }
                     }
                 }

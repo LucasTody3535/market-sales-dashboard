@@ -32,7 +32,7 @@ export function calculateProfitMargin(profit, revenue) {
 
 export function formatSalesMetadata(sales) {
     for( let sale in sales ) {
-        sales[sale].revenue = `$${formatNumToReadableString(sales[sale].revenue)}`;
+        sales[sale].formattedRevenue = `$${formatNumToReadableString(sales[sale].revenue)}`;
         sales[sale].formattedQuantity = `${formatNumToReadableString(sales[sale].quantity)}un`;
     }
 }

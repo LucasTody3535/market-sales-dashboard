@@ -18,7 +18,8 @@ const SALES_DATA = reactive({
 
 async function treatChangeOfOptions(data) {
     if( STORE.user === null ) return;
-    SALES_DATA.value = await queryUserSalesData(STORE.user.user.id, data.y.value, data.q.value);
+    let res = await queryUserSalesData(STORE.user.user.id, data.y.value, data.q.value);
+    SALES_DATA.value = res;
 }
 
 provide("kpiData", KPI_DATA);

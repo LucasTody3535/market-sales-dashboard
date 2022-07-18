@@ -47,7 +47,6 @@ export async function queryUserSalesData(user_id, year, quarter) {
     salesFormattedInfo.ticket = calculateTicket(salesFormattedInfo.revenue, salesInfo.clients);
     salesFormattedInfo.profitMargin = calculateProfitMargin(salesInfo.profit, salesFormattedInfo.revenue);
     salesFormattedInfo.totalSales = calculateTotalSales(salesInfo.sales);
-
     salesFormattedInfo.revenue = formatNumToReadableString(salesFormattedInfo.revenue);
     salesFormattedInfo.totalSales = formatNumToReadableString(salesFormattedInfo.totalSales);
 
