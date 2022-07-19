@@ -1,6 +1,9 @@
 <script setup>
 import { CategoryScale, Chart, Legend, LinearScale, LineController, LineElement, PointElement, Tooltip } from "chart.js";
-import { onMounted, ref } from "vue";
+import { inject, onMounted, ref, watch } from "vue";
+
+let salesData = inject("salesData");
+let CHART_REF = null;
 
 Chart.register(
     LineController, LineElement,
@@ -10,15 +13,14 @@ Chart.register(
     Tooltip
 );
 
-const CHART_REF = ref(null);
 
 onMounted(() => {
     let area = document.querySelector("#lineChart");
 
-    CHART_REF.value = new Chart(area, {
+    CHART_REF = new Chart(area, {
         type: "line",
         data: {
-            labels: ["2015", "2016", "2017", "2018", "2019", "2020"],
+            labels: ["from", "to"],
             datasets: [
                 {
                     label: "Data in Percent",
@@ -34,6 +36,14 @@ onMounted(() => {
                 legend: {
                     labels: {
                         color: "black"
+                    }
+                },
+                tooltip: {
+                    usePointStyle: true,
+                    callbacks: {
+                        label: function(metadata) {
+                            return `${metadata.raw}%`
+                        }
                     }
                 }
             },
@@ -58,6 +68,14 @@ onMounted(() => {
         }
     })
 
+})
+
+watch(salesData, () => {
+    let values = salesData.value.anualGrowth.values;
+    let labels = salesData.value.anualGrowth.flags;
+    CHART_REF.data.datasets[0].data = values;
+    CHART_REF.data.labels = labels;
+    CHART_REF.update();
 })
 
 </script>

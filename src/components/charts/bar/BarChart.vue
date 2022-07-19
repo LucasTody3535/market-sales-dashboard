@@ -83,7 +83,6 @@ watch(salesData, () => {
         dataList.push(ITEMS_PROFIT[data].quantity);
     }
 
-    CHART_REF.data.datasets[0].n = 12;
     CHART_REF.data.datasets[0].data = dataList
     CHART_REF.update();
 })
