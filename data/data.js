@@ -1,7 +1,7 @@
 import { formatNumToReadableString } from "../src/utils/numbers/number.utils";
 import { SYMBOLS } from "../src/utils/symbols/symbols.utils";
 import { SALES_DATA, KPIS, USERS } from "./db";
-import { calculateProfitMargin, calculateRevenue, calculateTicket, calculateTotalSales, formatSalesMetadata } from "./db.data.operations";
+import { calculateAnualGrowth, calculateAnualGrowthOfMultipleYears, calculateAnualRevenue, calculateProfitMargin, calculateRevenue, calculateTicket, calculateTotalSales, formatLabel, formatSalesMetadata } from "./db.data.operations";
 
 export async function queryCanAccess(access_id, password) {
     for( let user of USERS ) {
@@ -31,17 +31,39 @@ export async function queryKpiAndFormat(user_id) {
 
 export async function queryUserSalesData(user_id, year, quarter) {
     let salesInfo = null;
+    let years = [];
+    let yearsLabels = [];
+    let lastYearRevenue = 0;
+    let actualYearRevenue = 0;
     let salesFormattedInfo = {
         revenue: 0,
         ticket: 0,
         profitMargin: 0,
         totalSales: 0,
-        items: null
+        items: null,
+        anualGrowth: {
+            values: [],
+            flags: []
+        }
     };
 
     for( let sale of SALES_DATA ) {
-        if( sale.user_id === user_id )  salesInfo = sale.items[year][quarter];
+        if( sale.user_id === user_id ) {
+            for( let yearId in sale.items ) {
+                if( yearId === year ) {
+                    salesInfo = sale.items[year][quarter];
+                    years.push(sale.items[yearId]);
+                    yearsLabels.push(formatLabel(yearId));
+                    break;
+                }
+                years.push(sale.items[yearId]);
+                yearsLabels.push(formatLabel(yearId));
+            }
+        }
     }
+
+    salesFormattedInfo.anualGrowth.values = calculateAnualGrowthOfMultipleYears(years);
+    salesFormattedInfo.anualGrowth.flags = yearsLabels;
 
     salesFormattedInfo.revenue = calculateRevenue(salesInfo.sales);
     salesFormattedInfo.ticket = calculateTicket(salesFormattedInfo.revenue, salesInfo.clients);
@@ -57,6 +79,8 @@ export async function queryUserSalesData(user_id, year, quarter) {
 
     salesFormattedInfo.items = salesInfo.sales;
     formatSalesMetadata(salesFormattedInfo.items);
+
+    salesFormattedInfo.anualGrowth.to = calculateAnualGrowth(lastYearRevenue, actualYearRevenue);
 
     return salesFormattedInfo;
 }

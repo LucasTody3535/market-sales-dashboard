@@ -36,3 +36,50 @@ export function formatSalesMetadata(sales) {
         sales[sale].formattedQuantity = `${formatNumToReadableString(sales[sale].quantity)}un`;
     }
 }
+
+export function calculateAnualRevenue(quarters) {
+    let revenue = calculateRevenue(quarters.sales);
+    return revenue;
+}
+
+export function calculateAnualGrowth(lastYearRev, actualYearRev) {
+    if( lastYearRev === 0 ) return 100;
+    let growthInPercent = ((actualYearRev - lastYearRev) / lastYearRev) * 100;
+    return growthInPercent.toFixed(2);
+}
+
+export function calculateAnualGrowthOfMultipleYears(yearList) {
+    let growth = [];
+    let isFirstElementStartPoint = true;
+    let lastYear = null;
+    let lastYearRev = 0;
+    let actualYearRev = 0;
+
+    for( let year of yearList ) {
+        if( isFirstElementStartPoint ) {
+            growth.push(0);
+            growth.push(calculateAnualGrowth(0, year));
+            isFirstElementStartPoint = false;
+            lastYear = year;
+            continue;
+        }
+
+        for( let lastQuarter in lastYear ) {
+            lastYearRev += calculateAnualRevenue(lastYear[lastQuarter]);
+        }
+
+        for( let lastQuarter in year ) {
+            actualYearRev += calculateAnualRevenue(year[lastQuarter]);
+        }
+
+        growth.push(calculateAnualGrowth(lastYearRev, actualYearRev));
+    }
+
+    return growth;
+}
+
+export function formatLabel(label) {
+    if( label.length > 4 ) {
+        return label.substring(4);
+    }
+}
