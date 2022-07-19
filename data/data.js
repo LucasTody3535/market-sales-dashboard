@@ -64,6 +64,7 @@ export async function queryUserSalesData(user_id, year, quarter) {
 
     salesFormattedInfo.anualGrowth.values = calculateAnualGrowthOfMultipleYears(years);
     salesFormattedInfo.anualGrowth.flags = yearsLabels;
+    salesFormattedInfo.anualGrowth.flags.unshift("start");
 
     salesFormattedInfo.revenue = calculateRevenue(salesInfo.sales);
     salesFormattedInfo.ticket = calculateTicket(salesFormattedInfo.revenue, salesInfo.clients);
