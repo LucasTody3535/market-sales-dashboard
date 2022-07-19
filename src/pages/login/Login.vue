@@ -60,15 +60,15 @@ const treatAccessInfo = async () => {
 }
 
 [data-page = "login"] #help-links a:hover {
-    color: #0077ffc0;
+    color: black;
 }
 
 [data-page = "login"] #help-links a:visited {
-    color: #003775c0;
+    color: #000000b9;
 }
 
 [data-page = "login"] form {
-    background-color: #0077ffc0;
+    background-color: var(--box-color);
     height: 250px;
     flex: 0.4;
     display: grid;
