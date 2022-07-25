@@ -60,7 +60,7 @@ label:nth-child(3) {
 label {
     margin-left: 10px;
     font-size: 1.2rem;
-    color: white;
+    color: var(--font-color);
 }
 
 @media screen and (max-width: 767px) {
